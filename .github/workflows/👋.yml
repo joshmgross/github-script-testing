@@ -12,9 +12,5 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            console.log(JSON.stringify(context.issue))
-            const issueNumber = context.issue.number
-            delete context.issue.number
-            context.issue.issue_number = issueNumber
-            console.log(JSON.stringify(context.issue))
-            github.issues.createComment({...context.issue, body: '👋 Thanks for reporting!'})
+            const issue = { context.issue.owner, context.issue.repo, issue_number: context.issue.number }
+            github.issues.createComment({...issue, body: '👋 Thanks for reporting!'})
