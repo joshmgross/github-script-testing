@@ -1,7 +1,8 @@
 name: Say Hello!
 
 on:
-  issues: {types: opened}
+  issues:
+    types: [opened, reopened]
 
 jobs:
   comment:
