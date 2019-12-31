@@ -12,5 +12,5 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const issue = { context.issue.owner, context.issue.repo, issue_number: context.issue.number }
+            const issue = { owner: context.issue.owner, repo: context.issue.repo, issue_number: context.issue.number }
             github.issues.createComment({...issue, body: '👋 Thanks for reporting!'})
