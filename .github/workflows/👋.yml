@@ -10,7 +10,6 @@ jobs:
     steps:
       - uses: joshmgross/github-script@1d4576cfc130984e1b2fdec481300e354c3f1268
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const issue = { owner: context.issue.owner, repo: context.issue.repo, issue_number: context.issue.number }
             github.issues.createComment({...issue, body: '🦕 GitHub script without a token!'})
