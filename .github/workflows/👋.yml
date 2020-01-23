@@ -8,9 +8,17 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@0.3.0
+      - uses: joshmgross/github-script@1d4576cfc130984e1b2fdec481300e354c3f1268
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const issue = { owner: context.issue.owner, repo: context.issue.repo, issue_number: context.issue.number }
-            github.issues.createComment({...issue, body: '👋 Thanks for reporting!'})
+            github.issues.createComment({...issue, body: '🦕 GitHub script without a token!'})
+            
+            
+      - uses: joshmgross/github-script@1d4576cfc130984e1b2fdec481300e354c3f1268
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            const issue = { owner: context.issue.owner, repo: context.issue.repo, issue_number: context.issue.number }
+            github.issues.createComment({...issue, body: '🦖 GitHub script with a token!'})
